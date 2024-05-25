@@ -43,8 +43,8 @@ const SearchResultsCard = ({ hotel }: Props) => {
           </Link>
           <div className="line-clamp-4">{hotel.description}</div>
 
-          <div className="text-l font-bold">BedRoom: {hotel.adultCount} {/* Display adult count */}
-          <div>Bathroom: {hotel.childCount}</div> {/* Display child count */}
+          <div className="text-l font-bold">BedRoom: {hotel.adultCount} 
+          <div>Bathroom: {hotel.childCount}</div> 
         </div></div>
         
         <div className="flex gap-1 items-center">

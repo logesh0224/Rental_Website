@@ -14,22 +14,14 @@ const hotelSchema = new mongoose.Schema<HotelType>({
   name: { type: String, required: true },
   city: { type: String, required: true },
   country: { type: String, required: true },
-  //area:{type:Number,required:true},
-  //available:{type:String,required:true},
-  //bedrooms:{type:String,required:true},
-  //bathrooms:{type:String,required:true},
   
-  
-
-
-
   description: { type: String, required: true },
   //furnishable:{type:String,required:true},
   type: { type: String, required: true },
   adultCount: { type: Number, required: true },
   facilities:[{type:String,required:true}],
   childCount: { type: Number, required: true },
-  pricePerNight: { type: Number, required: true },
+  pricePerMonth: { type: Number, required: true },
   starRating: { type: Number, required: true, min: 1, max: 5 },
   imageUrls: [{ type: String, required: true }],
   lastUpdated: { type: Date, required: true },

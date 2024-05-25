@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HotelType } from "../../../backend/src/shared/types";
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 
 const BookingDetailsSummary = ({ hotel }: Props) => {
   const [email, setEmail] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,14 +20,14 @@ const BookingDetailsSummary = ({ hotel }: Props) => {
       },
       body: JSON.stringify({
         email,
-        hotelId: hotel._id // Ensure the hotel ID is sent
+        hotelId: hotel._id, // Ensure the hotel ID is sent
       }),
     });
 
     if (response.ok) {
-      alert("Seller details sent successfully!");
+      navigate("/search"); // Redirect to the home page
     } else {
-      alert("Failed to send seller details.");
+      navigate('/search')
     }
   };
 
@@ -58,7 +60,7 @@ const BookingDetailsSummary = ({ hotel }: Props) => {
           <div className="flex items-center border-b border-teal-500 py-2">
             <input
               type="email"
-              placeholder="Enter email"
+              placeholder="Get In Email"
               className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

@@ -4,14 +4,14 @@ import { useAppContext } from "../../../contexts/AppContext";
 
 type Props = {
   hotelId: string;
-  pricePerNight: number;
+  pricePerMonth: number;
 };
 
 type GuestInfoFormData = {
   policiesAccepted: boolean;
 };
 
-const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
+const GuestInfoForm = ({ hotelId}: Props) => {
   const { isLoggedIn } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,8 +33,8 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   };
 
   return (
-    <div className="flex flex-col p-4 bg-teal-200 rounded-md gap-4">
-      <h3 className="text-md font-bold">{pricePerNight}</h3>
+    <div className="flex flex-col p-4 bg-teal-700 rounded-md gap-4 max-w-md mx-auto">
+      <h3 className="text-lg font-bold text-white">{}</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div className="flex items-center">
           <input
@@ -44,8 +44,8 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
             defaultChecked // Default to checked
             className="h-5 w-5 text-teal-600 rounded-sm focus:ring-teal-400"
           />
-          <label htmlFor="policiesAccepted" className="ml-2 text-gray-700 font-semibold">
-            Accept Policies
+          <label htmlFor="policiesAccepted" className="ml-2 text-white font-semibold">
+            Accept the Policies and Terms of Rentify
           </label>
         </div>
         {errors.policiesAccepted && (
@@ -55,9 +55,9 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
         )}
         <button
           type="submit"
-          className="bg-teal-700 text-white py-2 px-4 rounded-md font-semibold hover:bg-teal-500 transition duration-300"
+          className="bg-teal-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-teal-500 transition duration-300"
         >
-          {isLoggedIn ? "Book Now" : "Sign in to Book"}
+          {isLoggedIn ? "Get Seller Details" : "Sign in to See Seller Details"}
         </button>
       </form>
     </div>

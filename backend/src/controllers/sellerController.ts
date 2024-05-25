@@ -1,49 +1,43 @@
-// controllers/emailController.ts
-
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
-import Hotel from '../models/house'; // Adjust the import here
-import { HotelType } from '../shared/types'; // Adjust the import for HotelType
 
-const sendHotelDetailsByEmail = async (req: Request, res: Response): Promise<void> => {
-  const { email, hotelId } = req.body;
+export const sendSellerInfoByEmail = async (req: Request, res: Response) => {
+  console.log('Request Body:', req.body); // Log the entire request body
+
+  const { email, sellerName, sellerAddress, sellerEmail, sellerphoneNumber } = req.body;
 
   try {
-    // Fetch hotel details based on the hotelId from your database
-    const hotelDetails: HotelType | null = await Hotel.findById(hotelId);
-
-    if (!hotelDetails) {
-      res.status(404).json({ message: 'Hotel not found.' });
-      return;
-    }
-
-    // Configure nodemailer transporter
+    // Create transporter using SMTP transport
     const transporter = nodemailer.createTransport({
-      // Configure your email transporter (e.g., SMTP, SendGrid, etc.)
-      // Example:
       service: 'gmail',
       auth: {
         user: 'rentify100@gmail.com',
-        pass: 'czrxdwnvasacewrk',
-      },
+        pass: 'czrxdwnvasacewrk'
+      }
     });
 
-    // Email options
+    // Setup email data
     const mailOptions = {
       from: 'rentify100@gmail.com',
       to: email,
-      subject: 'Hotel Details',
-      text: JSON.stringify(hotelDetails),
+      subject: 'Seller Details',
+      html: `
+        <p>Hello,</p>
+        <p>Here are the seller details:</p>
+        <p>Name: ${sellerName}</p>
+        <p>Address: ${sellerAddress}</p>
+        <p>Phone Number: ${sellerphoneNumber}</p>
+        <p>Email: ${sellerEmail}<p>
+      `
     };
 
-    // Send email
+    // Send mail
     await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ message: 'Hotel details sent successfully!' });
+    
+    console.log('Seller details email sent successfully');
+    res.status(200).json({ message: 'Seller details sent successfully' });
   } catch (error) {
-    console.error('Error sending hotel details by email:', error);
-    res.status(500).json({ message: 'Failed to send hotel details.' });
+    console.error('Error sending email:', error);
+    res.status(500).json({ message: 'Failed to send seller details' });
   }
 };
-
-export { sendHotelDetailsByEmail };

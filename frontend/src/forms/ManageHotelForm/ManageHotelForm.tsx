@@ -17,10 +17,9 @@ export type HotelFormData = {
   //furnishable: string;
   pricePerMonth: number;
   starRating: number;
-  bedrooms: string;
-  bathrooms: string;
+  
   //area: number;
-  available: string;
+ 
   facilities: string[];
   imageFiles: FileList;
   imageUrls: string[];
@@ -61,11 +60,6 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
     formData.append("starRating", formDataJson.starRating.toString());
     formData.append("adultCount", formDataJson.adultCount.toString());
     formData.append("childCount", formDataJson.childCount.toString());
-    //formData.append("furnishable", formDataJson.furnishable);
-    //formData.append("bedrooms", formDataJson.bedrooms);
-    //formData.append("bathrooms", formDataJson.bathrooms);
-    //formData.append("area", formDataJson.area.toString());
-    //formData.append("available", formDataJson.available);
 
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
@@ -93,7 +87,7 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
   return (
     <FormProvider {...formMethods}>
       <form className="flex flex-col gap-10" onSubmit={onSubmit}>
-        <SellerDetails /> {/* Include the SellerDetails component */}
+        <SellerDetails />
         <DetailsSection />
         <TypeSection />
         <FacilitiesSection />

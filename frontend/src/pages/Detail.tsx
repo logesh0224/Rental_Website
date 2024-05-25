@@ -6,7 +6,6 @@ import GuestInfoForm from "../forms/ManageHotelForm/GuestInfoForm/GuestInfoForm"
 
 const Detail = () => {
   const { hotelId } = useParams();
-
   const { data: hotel, isLoading } = useQuery(
     "fetchHotelById",
     () => apiClient.fetchHotelById(hotelId || ""),
@@ -21,6 +20,7 @@ const Detail = () => {
 
   return (
     <div className="space-y-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      {/* Hotel details */}
       <div className="flex flex-col lg:flex-row border border-slate-300 rounded-lg p-4 lg:p-2 xl:p-4 gap-4 lg:gap-8">
         <div className="relative overflow-hidden rounded-lg w-full lg:w-1/3">
           {hotel.imageUrls && hotel.imageUrls.map((image, index) => (
@@ -73,21 +73,14 @@ const Detail = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-        {hotel.imageUrls && hotel.imageUrls.slice(1).map((image, index) => (
-          <div key={index} className="h-[300px] shadow-lg rounded-md overflow-hidden">
-            <img
-              src={image}
-              alt={hotel.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
+      {/* Seller info */}
+      <div className="flex flex-col lg:flex-row border border-slate-300 rounded-lg p-4 lg:p-2 xl:p-4 gap-4 lg:gap-8">
+        {/* Display seller info here */}
       </div>
 
-
+      {/* Guest info form */}
       <div className="p-4 border border-slate-300 rounded-md shadow-md bg-white mt-4">
-        <GuestInfoForm pricePerNight={hotel.pricePerNight} hotelId={hotel._id} />
+        <GuestInfoForm pricePerMonth={hotel.pricePerMonth} hotelId={hotel._id} />
       </div>
     </div>
   );
