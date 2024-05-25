@@ -21,7 +21,7 @@ type AppContext = {
    stripePromise: Promise<Stripe | null>;
 };
 
-// Create AppContext
+
 const AppContext = React.createContext<AppContext | undefined>(undefined);
 
 
@@ -41,7 +41,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
                 setToast(toastMessage);
             },
             isLoggedIn: !isError,
-            stripePromise  // Assuming isError indicates token validation failure
+            stripePromise  
         }}>
             {toast && (
                 <Toast

@@ -15,13 +15,7 @@ import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 import Booking from "./pages/Booking";
-//import hotelBgImage from "./hotel_bg.jpg";
 
-//import Home from "./pages/Home";
-
-
-
-//import { useAppContext } from "./contexts/AppContext";
 
 
 const App = ()=>{

@@ -58,8 +58,7 @@ import "dotenv/config";
 ### 2. Connecting to MongoDB
 
 ```typescript
-//const uri ="mongodb+srv://logeshboopathi:logeshboopathi@cluster0.4ax9iot.mongodb.net/?retryWrites=true&w=majority"
-// mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
+
 mongoose.connect("mongodb://127.0.0.1:27017").then(()=>"Connected").catch(()=>"error");
 
 
