@@ -16,7 +16,7 @@ import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 import Booking from "./pages/Booking";
 //import hotelBgImage from "./hotel_bg.jpg";
-import MyBookings from "./pages/MyBookings";
+
 //import Home from "./pages/Home";
 
 
@@ -65,13 +65,8 @@ const App = ()=>{
           </Layout>
         }
         />
-        <Route path="/my-bookings"
-        element={
-          <Layout>
-            <MyBookings/>
-          </Layout>
-        }
-        />
+       
+        
         </>
       )}
 
