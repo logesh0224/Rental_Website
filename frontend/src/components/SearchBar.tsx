@@ -17,7 +17,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex justify-center mt-4">
+    <div className="flex flex-col justify-center mt-4 items-center">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-4 flex items-center gap-4"
@@ -26,7 +26,7 @@ const SearchBar = () => {
         <div className="flex items-center w-full bg-white border border-gray-300 rounded-lg shadow-sm">
           <MdTravelExplore size={25} className="ml-2 text-teal-700" />
           <input
-            placeholder="Where are you going?"
+            placeholder="Search with area name like RS Puram, Coimbatore, Chennai"
             className="w-full p-2 text-gray-700 focus:outline-none"
             value={destination}
             onChange={(event) => setDestination(event.target.value)}
@@ -46,6 +46,7 @@ const SearchBar = () => {
           Search
         </button>
       </form>
+      <p className="text-sm text-black mt-2 text-l font-bold ">Search with Area Name what you adding in Property</p>
     </div>
   );
 };

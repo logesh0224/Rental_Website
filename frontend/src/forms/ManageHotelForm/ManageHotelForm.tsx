@@ -97,7 +97,7 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-blue-500 -text-white p-2 font-bold hover:bg-green-500 text-xl disabled:bg-gray-500" style={{ fontFamily: 'Montserrat, sans-serif' }}
+            className="bg-teal-500 -text-white p-2 font-bold hover:bg-green-500 text-xl disabled:bg-gray-500" style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             {isLoading ? "Posting..." : "Post My House"}
           </button>

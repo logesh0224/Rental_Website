@@ -20,7 +20,6 @@ const Detail = () => {
 
   return (
     <div className="space-y-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-      {/* Hotel details */}
       <div className="flex flex-col lg:flex-row border border-slate-300 rounded-lg p-4 lg:p-2 xl:p-4 gap-4 lg:gap-8">
         <div className="relative overflow-hidden rounded-lg w-full lg:w-1/3">
           {hotel.imageUrls && hotel.imageUrls.map((image, index) => (
@@ -44,7 +43,12 @@ const Detail = () => {
               </span>
               <span className="ml-1 text-sm">{hotel.type}</span>
             </div>
-            <h1 className="text-3xl font-bold text-teal-700">{hotel.name}</h1>
+            <div className="flex items-center space-x-2">
+              <h1 className="text-3xl font-bold text-teal-700">{hotel.name}</h1>
+              <span className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap">
+                {hotel.country}
+              </span>
+            </div>
             <p className="text-lg font-semibold text-teal-700">Rs {hotel.pricePerMonth} per Month</p>
             <div className="font-bold line-clamp-4 whitespace-pre-line text-blue">{hotel.description}</div>
           </div>
@@ -73,9 +77,8 @@ const Detail = () => {
         </div>
       </div>
 
-      {/* Seller info */}
       <div className="flex flex-col lg:flex-row border border-slate-300 rounded-lg p-4 lg:p-2 xl:p-4 gap-4 lg:gap-8">
-        {/* Display seller info here */}
+        {/* Additional content can be added here */}
       </div>
 
       {/* Guest info form */}

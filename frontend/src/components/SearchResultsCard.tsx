@@ -17,12 +17,12 @@ const SearchResultsCard = ({ hotel }: Props) => {
   return (
     <div className="flex flex-col lg:flex-row border border-slate-300 rounded-lg p-4 lg:p-2 xl:p-4 gap-4 lg:gap-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
       <div className="relative overflow-hidden rounded-lg w-60 h-36 lg:w-49 lg:h-32 xl:w-63 xl:h-48">
-        <Link  to={`/detail/${hotel._id}`}>
-        <img
-          src={hotel.imageUrls[0]}
-          className="object-cover w-full h-full"
-          alt={hotel.name}
-        />
+        <Link to={`/detail/${hotel._id}`}>
+          <img
+            src={hotel.imageUrls[0]}
+            className="object-cover w-full h-full"
+            alt={hotel.name}
+          />
         </Link>
       </div>
       <div className="flex-1 flex flex-col justify-between">
@@ -33,34 +33,40 @@ const SearchResultsCard = ({ hotel }: Props) => {
                 <AiFillStar key={index} className="fill-yellow-400" />
               ))}
             </span>
-            <span className="ml-1 text-sm">{hotel.type}</span>
+            <Link to={`/detail/${hotel._id}`} className="ml-1 text-sm">
+              {hotel.type}
+            </Link>
           </div>
-          <Link
-            to={`/detail/${hotel._id}`}
-            className="text-2xl font-bold cursor-pointer"
-          >
-            {hotel.name}
+          <div className="flex items-center">
+            <Link
+              to={`/detail/${hotel._id}`}
+              className="text-2xl font-bold cursor-pointer"
+            >
+              {hotel.name} -
+            </Link>
+            <span className="text-l font-bold cursor-pointe">
+              {hotel.country}
+            </span>
+          </div>
+          <Link to={`/detail/${hotel._id}`} className="line-clamp-4">
+            {hotel.description}
           </Link>
-          <div className="line-clamp-4">{hotel.description}</div>
-
-          <div className="text-l font-bold">BedRoom: {hotel.adultCount} 
-          <div>Bathroom: {hotel.childCount}</div> 
-        </div></div>
-        
+          <Link to={`/detail/${hotel._id}`} className="text-l font-bold">
+            BedRoom: {hotel.adultCount}
+            <div>Bathroom: {hotel.childCount}</div>
+          </Link>
+        </div>
         <div className="flex gap-1 items-center">
-          
-           { hotel.facilities.slice(0, 3).map((facility, index) => (
-              <span
-                key={index}
-                className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap"
-              >
-                {facility}
-              </span>
-            ))}
+          {hotel.facilities.slice(0, 3).map((facility, index) => (
+            <span
+              key={index}
+              className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap"
+            >
+              {facility}
+            </span>
+          ))}
           <span className="text-sm">
-            {
-              hotel.facilities.length > 3 &&
-              `+${hotel.facilities.length - 3} more`}
+            {hotel.facilities.length > 3 && `+${hotel.facilities.length - 3} more`}
           </span>
         </div>
       </div>
